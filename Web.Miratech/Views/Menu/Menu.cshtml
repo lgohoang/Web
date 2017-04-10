@@ -1,0 +1,21 @@
+﻿@model System.Collections.Generic.List<Web.Miratech.Models.MenuModels>
+
+
+@foreach (var item in Model)
+{
+    if (item.isDropdown)
+    {
+    <li class="dropdown">
+        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><b>@((item.Title != "") ? item.Title : item.Name)</b></a>
+        <ul class="dropdown-menu">
+            @Html.Action("ChildrenMenu", "Menu", new { ParentID = @item.ID })
+
+        </ul>
+    </li>
+    }
+    else
+    {
+    <li><a href="@item.Target"><b>@((item.Title != "") ? item.Title : item.Name)</b></a></li>
+    }
+}
+

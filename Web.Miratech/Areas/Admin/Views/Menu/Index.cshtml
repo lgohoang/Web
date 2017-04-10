@@ -1,0 +1,91 @@
+﻿@model System.Collections.Generic.List<Web.Miratech.Models.MenuModels>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<!--Striped Rows-->
+<div class="col-md-12">
+    <div class="panel panel-dark margin-bottom-40">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Menu
+                <a class="pull-right" href="@Url.Action("Create","Menu")">
+                    <i class="fa fa-plus"></i>
+                </a>
+            </h3>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tên</th>
+                    <th>Tiêu đề</th>
+                    <th>Menu Cha</th>
+                    <th>isDropdown</th>
+                    <th>Đường dẫn</th>
+                    <th>Cho phép hiện</th>
+                    <th>Hiện trong View</th>
+                    <th>Thứ tự</th>
+                    <th>Thời gian tạo</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var m in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => m.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => m.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => m.Title)
+                        </td>
+                        <td>
+                            @if (m.ParentID == null || m.ParentID == 0)
+                            {
+                                <label class="label label-danger">Là menu cha</label>
+                            }
+                            else
+                            {
+                                <label class="label label-primary">
+                                    @Html.Action("GetParentName","Menu", new { @ParentID = m.ParentID})
+                                </label>
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => m.isDropdown)
+                        </td>
+                        <td>
+                            @if (!@m.Target.IsEmpty())
+                            {
+                                @m.Target.Substring(0, Math.Min(@m.Target.Length, 25))
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => m.Visible)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => m.ShowInView)
+                        </td>
+                         <td>
+                            @Html.DisplayFor(modelItem => m.Order)
+                        </td>
+                         <td>
+                            @Html.DisplayFor(modelItem => m.CreateTime)
+                        </td>
+                       
+                        <td>
+                            <a class="btn btn-xs" href="@Url.Action("Edit", "Menu", new { ID = m.ID })"><i class="fa fa-edit"></i> Sửa</a>
+                            <a class="btn btn-danger btn-xs" href="@Url.Action("Delete", "Menu", new { ID = m.ID })"><i class="fa fa-trash-o"></i> Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--End Striped Rows-->

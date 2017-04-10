@@ -1,0 +1,314 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<!--=== Slider ===-->
+<div class="ms-layers-template">
+    <!-- masterslider -->
+    <div class="master-slider ms-skin-black-2 round-skin" id="masterslider">
+
+        @foreach (var sl in ViewBag.SLide)
+        {
+            if (sl.Video != null)
+            {
+                if (sl.Image != null)
+                { 
+            <div class="ms-slide" style="z-index: 10" data-delay="10">
+                <img src="~/Plugins/master-slider/masterslider/style/blank.gif" data-src="@((sl.Background != null) ? sl.Background : "Images/slide_background.jpg") " alt="">
+
+                <div class="ms-layer video-box" style="top: 70px; right: 15px; width: 550px; height: 310px;"
+                    data-type="video"
+                    data-effect="rotate3dright(0,30,0,100,r)"
+                    data-duration="1500"
+                    data-ease="easeOutQuad">
+                    <img class="ms-img-bordered" src="~/Plugins/master-slider/masterslider/style/blank.gif" data-src="@sl.Image" alt="">
+                    @*<iframe src="https://www.youtube.com/embed/qY6XLIHaESI" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>*@
+                    @Html.Raw(sl.Video)
+                </div>
+
+                <h3 class="ms-layer ms-title ms-promo-info color-light" style="left: 10px; top: 50px;"
+                    data-effect="bottom(20)"
+                    data-duration="2300"
+                    data-delay="500"
+                    data-ease="easeOutExpo">
+                    @sl.Title
+                </h3>
+
+                <p class="ms-layer ms-describe ms-promo-sub color-light" style="left: 10px; top: 300px;"
+                    data-effect="right(40)"
+                    data-duration="2300"
+                    data-delay="2300"
+                    data-ease="easeOutExpo">
+                    @sl.Describe
+                </p>
+            </div>
+                }
+                else
+                {
+            <div class="ms-slide" style="z-index: 10" data-delay="10">
+                <img src="~/Plugins/master-slider/masterslider/style/blank.gif" data-src="@((sl.Background != null) ? sl.Background : "Images/slide_background.jpg") " alt="">
+
+                <div class="ms-layer video-box" style="top: 70px; right: 15px; width: 550px; height: 310px;"
+                    data-type="video"
+                    data-effect="rotate3dright(0,30,0,100,r)"
+                    data-duration="1500"
+                    data-ease="easeOutQuad">
+                    @*<img class="ms-img-bordered" src="~/Plugins/master-slider/masterslider/style/blank.gif" data-src="@sl.Image" alt="">*@
+                    @*<iframe src="https://www.youtube.com/embed/qY6XLIHaESI" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>*@
+                    @Html.Raw(sl.Video)
+                </div>
+
+                <h3 id="resizess" class="ms-layer ms-title ms-promo-info color-light" style="left: 10px; top: 50px;"
+                    data-effect="bottom(20)"
+                    data-duration="2300"
+                    data-delay="1700"
+                    data-ease="easeOutExpo">
+                    @sl.Title
+                </h3>
+
+                <p class="ms-layer ms-describe ms-promo-sub color-light" style="left: 10px; top: 300px;"
+                    data-effect="right(40)"
+                    data-duration="2300"
+                    data-delay="2300"
+                    data-ease="easeOutExpo">
+                    @sl.Describe
+                </p>
+            </div>
+                }
+            }
+            else
+            {
+                if (sl.Image != null)
+                {
+            <div class="ms-slide" style="z-index: 10" data-delay="6">
+                <img src="~/Plugins/master-slider/masterslider/style/blank.gif" data-src="@((sl.Background != null) ? sl.Background : "Images/slide_background.jpg")" alt="">
+
+                <img class="ms-layer" src="~/Plugins/master-slider/masterslider/style/blank.gif" data-src="@sl.Image" alt=""
+                    style="top:100px; left: 15px; width: 400px; height: auto;"
+                    data-effect="bottom(100)"
+                    data-duration="2000"
+                    data-ease="easeOutExpo"
+                    data-type="image"/>
+
+                <h3 class="ms-layer ms-title ms-promo-info-in color-light" style="left: 450px; top: 100px;"
+                    data-effect="right(40)"
+                    data-duration="2300"
+                    data-delay="1300"
+                    data-ease="easeOutExpo">@sl.Title</h3>
+
+                <div class="ms-layer ms-describe ms-promo-sub-image color-light" style="left: 450px; top: 180px"
+                    data-effect="bottom(40)"
+                    data-duration="2000"
+                    data-delay="1300"
+                    data-ease="easeOutExpo">
+                    @sl.Describe
+                </div>
+
+            </div>
+                }
+                else
+                {
+            <div class="ms-slide" style="z-index: 10;"
+                data-delay="6">
+                <img src="~/Plugins/master-slider/masterslider/style/blank.gif" data-src="@((sl.Background != null) ? sl.Background : "Images/slide_background.jpg")" alt="">
+                <div class="ms-layer ms-title ms-promo-info-text color-light" style="top: 200px;"
+                    data-effect="bottom(40)"
+                    data-duration="2000"
+                    data-delay="1000"
+                    data-ease="easeOutExpo">
+                    @sl.Title
+                </div>
+
+                <div class="ms-layer ms-describe ms-promo-sub color-light" style="top: 270px;"
+                    data-effect="bottom(40)"
+                    data-duration="2000"
+                    data-delay="1300"
+                    data-ease="easeOutExpo">
+                    @sl.Describe
+                </div>
+            </div>
+                }
+            }
+        }
+    </div>
+</div>
+
+
+<!--=== Purchase Block ===-->
+<div class="purchase">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 animated fadeInLeft" style="text-align:center;">
+                <span style="font-size:40px;">Miraway</span>
+                <p style="font-size:20px;"><i>Nhà cung cấp uy tín chất lượng hiệu quả các sản phẩm và dịch vụ trong lĩnh vực công nghệ môi trường </i></p>
+            </div>
+            @*<div class="col-md-3 btn-buy animated fadeInRight">
+                <a href="#" class="btn-u btn-u-lg"><i class="fa fa-cloud-download"></i>Download Now</a>
+            </div>*@
+        </div>
+    </div>
+</div>
+<!--/row-->
+<!-- End Purchase Block -->
+
+<!--=== Content Part ===-->
+<div class="container content-sm">
+    @*<!-- Service Blocks -->
+    <div class="row margin-bottom-30">
+        <div class="col-md-4">
+            <div class="service">
+                <i class="fa fa-compress service-icon"></i>
+                <div class="desc">
+                    <h4>Fully Responsive</h4>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="service">
+                <i class="fa fa-cogs service-icon"></i>
+                <div class="desc">
+                    <h4>HTML5 + CSS3</h4>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="service">
+                <i class="fa fa-rocket service-icon"></i>
+                <div class="desc">
+                    <h4>Launch Ready</h4>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Service Blokcs -->*@
+
+    <!-- Recent Works -->
+    <div class="headline">
+        <h2>Ưu điểm vượt trội của lò đốt rác Miraway</h2>
+    </div>
+    @for (int i = 0; i < ViewBag.NumberRow; i++)
+    {
+        <div class="row margin-bottom-20">
+            @for (int j = i * ViewBag.NumberOfRow; j < ViewBag.NumberOfRow * i + 4; j++)
+            {
+                if (j < ViewBag.Count)
+                {
+                <div class="col-md-3 col-sm-6">
+                    <div class="thumbnails thumbnail-style thumbnail-kenburn">
+                        <div class="thumbnail-img">
+                            <div class="overflow-hidden">
+                                <a href="@Url.Action("Post", "View", new { @ID = @ViewBag.Solution_Areas[j].ID })">
+                                    <img class="img-responsive" src="@ViewBag.Solution_Areas[j].Image" alt="">
+                                </a>
+                            </div>
+                            <a class="btn-more hover-effect" href="@Url.Action("Post", "View", new { @ID = @ViewBag.Solution_Areas[j].ID })">Đọc thêm</a>
+                        </div>
+                        <div class="caption">
+                            <h3><a class="hover-effect" href="@Url.Action("Post", "View", new { @ID = @ViewBag.Solution_Areas[j].ID })"><b>@ViewBag.Solution_Areas[j].Title</b></a></h3>
+                            <p>@ViewBag.Solution_Areas[j].Describe</p>
+                        </div>
+                    </div>
+                </div>
+                }
+                else
+                {
+                    break;
+                }
+
+            }
+        </div>
+    }
+    <!-- End Recent Works -->
+
+    <!-- Info Blokcs -->
+    <div class="row margin-bottom-30">
+        <!-- Welcome Block -->
+        <div class="col-md-8 md-margin-bottom-40">
+             <div class="headline"><h2>Miraway - Nhà sản xuất lò đốt rác hàng đầu</h2></div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <img class="img-responsive margin-bottom-20" src="~/Images/whoweare.png" alt="">
+                </div>
+                <div class="col-sm-8" style="text-align: justify; width:65%;">
+                    <ul class="list-unstyled margin-bottom-20">
+                        <li><i class="fa fa-check color-green"></i> Thành lập năm 2007, Miraway là đơn vị chuyên nghiên cứu, sản xuất và triển khai các thiết bị, hệ thống xử lý rác hàng đầu tại Viêt Nam</li>
+                        <li><i class="fa fa-check color-green"></i> Đội ngũ chuyên gia xuất sắc, giàu kinh nghiệm trong lĩnh vực xử lý môi trường</li>
+                        <li><i class="fa fa-check color-green"></i> Cam kết đưa ra các giải pháp môi trường tối ưu nhất với dịch vụ chuyên nghiệp cho khách hàng</li>
+                        <li><i class="fa fa-check color-green"></i> Luôn cải tiến, tích hợp công nghệ hàng đầu thế giới vào từng sản phẩm</li>
+                    </ul>
+                </div>
+            </div>
+            <blockquote class="hero-unify">
+                <p style="color:gray;"><i>“Bảo vệ môi trường sống chính là bảo vệ tương lai của bạn và các thế hệ tiếp theo để phát triển nhanh và bền vững. Miraway cam kết là đơn vị tiên phong ứng dụng các công nghệ hàng đầu của thế giới vào sản xuất, triển khai các hệ thống dây chuyền, thiết bị xử lý rác thải tiên tiến, hiệu quả và phù hợp nhất với thực tế tại Việt Nam, góp phần bảo vệ môi trường và nâng cao chất lượng cuộc sống của người dân Việt Nam”</i></p>
+                <small style="color:green;">Tổng giám đốc, Nguyễn Quang Hiển</small>
+            </blockquote>
+        </div>
+        <!--/col-md-8-->
+
+        <!-- Latest Shots -->
+        <div class="col-md-4">
+            <div class="headline">
+                <h2>Bài viết mới</h2>
+            </div>
+            <div id="myCarousel" class="carousel slide carousel-v1">
+                <div class="carousel-inner">
+                    @{
+
+                        var lp = ViewBag.LastedPost;
+                        if (lp != null)
+                        {
+                            <div class="item active">
+                                <img class="carousel-image" src="@lp[0].Image" alt="">
+                                <div class="carousel-caption">
+                                    <a style="text-decoration:none" href="@Url.Action("Post","View", new { @Id = @lp[0].ID})">
+                                        <p>@lp[0].Title</p>
+                                    </a>
+                                </div>
+                            </div>
+                            for (int i = 1; i < lp.Count; i++)
+                            {
+                                <div class="item">
+                                    <img class="carousel-image" src="@lp[i].Image" alt="">
+                                    <div class="carousel-caption">
+                                        <a style="text-decoration:none" href="@Url.Action("Post","View", new { @Id = @lp[i].ID})">
+                                            <p>@lp[i].Title</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+
+                <div class="carousel-arrow">
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--/col-md-4-->
+    </div>
+    <!-- End Info Blokcs -->
+
+    @*<!-- Owl Clients v1 -->
+    <div class="headline">
+        <h2>Khách hàng</h2>
+    </div>
+    <div class="owl-clients-v1">
+        @foreach (var o in ViewBag.OurClients)
+        {
+            <div class="item">
+                <img src="@o.Image" alt="">
+            </div>
+        }
+    </div>
+    <!-- End Owl Clients v1 -->*@
+</div>
+<!--/container-->
+<!-- End Content Part -->

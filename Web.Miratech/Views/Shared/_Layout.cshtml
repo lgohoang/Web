@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Miratech.vn</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/Plugins/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="~/Plugins/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <link href="~/Content/style.css" rel="stylesheet"/>
+    <link href="~/Content/custom.css" rel="stylesheet" />
+    <link href="~/Content/headers/header-default.css" rel="stylesheet"/>
+    <link href="~/Content/footers/footer-default.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/theme-colors/default.css" rel="stylesheet"/>
+    <link href="~/Content/theme-skins/dark.css" rel="stylesheet"/>
+    <link href="~/Content/plugins/animate.css" rel="stylesheet"/>
+    <link href="~/Plugins/line-icons/line-icons.css" rel="stylesheet"/>
+    <link href="~/Plugins/master-slider/masterslider/style/masterslider.css" rel="stylesheet"/>
+    <link href="~/Plugins/master-slider/masterslider/skins/black-2/style.css" rel="stylesheet"/>
+    <link href="~/Plugins/owl-carousel/owl-carousel/owl.carousel.css" rel="stylesheet"/>
+
+    @*@Styles.Render("~/Content/css")*@
+    @*@Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="container">
+                <!-- Logo -->
+                <div class="logo" style="max-width: 200px;">
+                    <a href="@Url.Action("Index", "Home", new { area = ""})">
+                        <img class="img-responsive" src="~/Images/logo.png" alt="Logo">
+                    </a>
+                </div>
+                <!-- End Logo -->
+                <!-- Topbar -->
+                <div class="topbar">
+                    <ul class="loginbar pull-right">
+                        <li class="hoverSelector">
+                            <i class="fa fa-globe"></i>
+                            <a>Ngôn ngữ</a>
+                            <ul class="languages hoverSelectorBlock">
+                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                                    <a href="#">Tiếng anh</a>
+                                </li>
+                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")"><a href="#">Tiếng việt <i class="fa fa-check"></i></a></li>
+                            </ul>
+                        </li>
+                        <li class="topbar-devider"></li>
+                        <li><a href="@Url.Action("Index","View", new { @CategoriesID = 5})">Tuyển dụng</a></li>
+                        <li class="topbar-devider"></li>
+                        <li><a href="@Url.Action("Contact", "Home", new { area = ""})">Liên hệ</a></li>
+                        <li class="topbar-devider"></li>
+                        <li><a href="@Url.Action("Index", "Home", new { area = "Admin"})">Quản trị</a></li>
+                    </ul>
+                </div>
+                <!-- End Topbar -->
+                <!-- Toggle get grouped for better mobile display -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="fa fa-bars"></span>
+                </button>
+                <!-- End Toggle -->
+            </div>
+            <!--/end container-->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+                <div class="container">
+                    <ul class="nav navbar-nav">
+                        @Html.Action("Menu", "Menu", new { area = ""})
+                        <!-- Search Block -->
+                        <li>
+                            <i class="search fa fa-search search-btn"></i>
+                            <div class="search-open">
+                                <div class="input-group animated fadeInDown">
+                                    <input type="text" class="form-control" placeholder="Nhập từ cần tìm ...">
+                                    <span class="input-group-btn">
+                                        <button class="btn-u" type="button">Tìm</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- End Search Block -->
+                    </ul>
+                </div>
+                <!--/end container-->
+            </div>
+            <!--/navbar-collapse-->
+        </div>
+    </div>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer>
+        <!--=== Footer Version 1 ===-->
+        <div class="footer-v1">
+            <div class="footer">
+                <div class="container">
+                    <div class="row">
+                        <!-- About -->
+                        
+                        <!-- End About -->
+                        <!-- Latest -->
+                        <div class="col-md-4 md-margin-bottom-40">
+                            <div class="posts">
+                                <div class="headline"><h2>Bài viết mới</h2></div>
+                                @Html.Action("LatestPost", "View", new { area = ""})
+                            </div>
+                        </div><!--/col-md-3-->
+                        <!-- End Latest -->
+                        <!-- Link List -->
+                        <div class="col-md-4 md-margin-bottom-40">
+                            <div class="headline"><h2>Liên kết</h2></div>
+                            <ul class="list-unstyled link-list">
+                                <li><a href="@Url.Action("Index","View", new { @CategoriesID = 5})">Tuyển dụng</a></li>
+                                <li><a href="@Url.Action("Contact","Home", new { @CategoriesID = 5})">Liên hệ</a></li>
+                            </ul>
+                        </div><!--/col-md-3-->
+                        <!-- End Link List -->
+                        <!-- Address -->
+                        <div class="col-md-4 map-img md-margin-bottom-40">
+                            <div class="headline"><h2>Liên hệ</h2></div>
+                            <address class="md-margin-bottom-40">
+                                41, Phu Kieu 1 <br />
+                                Kieu Mai, Hanoi <br />
+                                Phone: +84 436 436 999 <br />
+                                Fax: +84 436 436 999 <br />
+                                Email: <a href="mailto:contact@miratech.vn" class="">contact@miraway.vn</a>
+                            </address>
+                        </div><!--/col-md-3-->
+                        <!-- End Address -->
+                    </div>
+                </div>
+            </div><!--/footer-->
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>
+                                Copyright &copy; 2007 - 2014 Miraway Inc. All rights reserved.
+                                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                            </p>
+                        </div>
+                        <!-- Social Links -->
+                        <div class="col-md-6">
+                            <ul class="footer-socials list-inline">
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Skype">
+                                        <i class="fa fa-skype"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Google Plus">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linkedin">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Pinterest">
+                                        <i class="fa fa-pinterest"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Dribbble">
+                                        <i class="fa fa-dribbble"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End Social Links -->
+                    </div>
+                </div>
+            </div><!--/copyright-->
+        </div>
+        <!--=== End Footer Version 1 ===-->
+        
+    </footer>
+    <script src="~/Scripts/jquery-2.2.0.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/app.js"></script>
+    <script src="~/Plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Plugins/back-to-top.js"></script>
+    <script src="~/Plugins/smoothScroll.js"></script>
+    <script src="~/Plugins/master-slider/masterslider/masterslider.min.js"></script>
+    <script src="~/Scripts/plugins/master-slider-fw.js"></script>
+    <script src="~/Plugins/owl-carousel/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/Scripts/plugins/owl-carousel.js"></script>
+
+
+
+@*    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/plugins")*@
+@*    @RenderSection("scripts", required: false)*@
+    <script src="~/Plugins/master-slider/masterslider/jquery.easing.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            App.init();
+            MSfullWidth.initMSfullWidth();
+            OwlCarousel.initOwlCarousel();
+        });
+    </script>
+</body>
+</html>

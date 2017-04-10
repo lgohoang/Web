@@ -1,0 +1,77 @@
+﻿@model Web.Miratech.Models.ClientModels
+@{
+    ViewBag.Title = "Edit Client";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="row">
+        <div class="col-md-3">
+            <h1 class="">Our Client</h1>
+        </div>
+        <div class="col-md-3 pull-right">
+            <h3>
+                <button type="submit" class="pull-right btn-default btn-primary">Lưu</button>
+            </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Tên Client" })
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Image, new { @class = "form-control", @placeholder = "Logo Client" })
+                </div>
+                <div class="col-md-2">
+                    <h5>
+                        <button id="image_upload" type="button" onclick="BrowseServer()" class="pull-right">File</button>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            @Html.TextBoxFor(model => model.Infomation, new { @class = "form-control", @placeholder = "Thông tin" })
+        </div>
+        <div class="col-md-3">
+            @Html.TextBoxFor(model => model.Order, new { @class = "form-control", @placeholder = "Thứ tự" })
+        </div>
+    </div>
+    <div class="row margin-bottom-10" style="margin-top:10px;">
+         <div class="col-md-2">
+            @Html.LabelFor(m => m.Visible)
+            @Html.DropDownListFor(m => m.Visible, new SelectList(ViewBag.TrueFalse, "Value", "Text"), new { @class = "selectpicker form-control" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>
+                <button type="submit" class="btn-default btn-primary">Lưu</button>
+                <button type="reset" class="btn-default btn-primary">Làm mới</button>
+            </h3>
+            <h3>
+                @Html.ActionLink("Back to List", "Index")
+            </h3>
+        </div>
+    </div>
+}
+<script src="~/plugins/ckfinder/ckfinder.js"></script>
+
+<script type="text/javascript">
+
+    function BrowseServer() {
+        var finder = new CKFinder();
+        //finder.basePath = '~/Upload/Article_Images/';
+        finder.selectActionFunction = SetFileField;
+        finder.popup();
+    }
+    function SetFileField(fileUrl) {
+        document.getElementById('Image').value = fileUrl;
+    }
+
+</script>

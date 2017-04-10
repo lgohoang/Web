@@ -1,0 +1,62 @@
+﻿@model System.Collections.Generic.List<Web.Miratech.Models.CategoryModels>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-12">
+    <div class="panel panel-dark margin-bottom-40">
+        <div class="panel-heading">
+            <h3 class="panel-title">Danh mục
+                <a class="pull-right" href="@Url.Action("Create", "Category")">
+                    <i class="fa fa-plus"></i>
+                </a>
+            </h3>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Icon</th>
+                    <th>Tên</th>
+                    <th>Tiêu đề</th>
+                    <th>Thứ tự</th>
+                    <th>Cho phép hiện</th>
+                    <th>Enable</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model[i].ID)
+                        </td>
+                        <td>
+                            <i class="fa @Model[i].Icon"></i>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model[i].Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model[i].Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model[i].Order)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model[i].Visible)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model[i].Enable)
+                        </td>
+                        <td>
+                            <a class="btn btn-xs" href="@Url.Action("Edit", "Category", new { id = Model[i].ID })"><i class="fa fa-edit"></i>Sửa</a>
+                            <a class="btn btn-danger btn-xs" href="@Url.Action("Delete", "Category", new { id = Model[i].ID })"><i class="fa fa-trash-o"></i>Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

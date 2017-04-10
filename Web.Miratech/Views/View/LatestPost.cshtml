@@ -1,0 +1,8 @@
+﻿@model System.Collections.Generic.List<Web.Miratech.Models.ArticleModels>
+
+<ul class="list-unstyled link-list">
+    @foreach (var item in Model)
+    {
+        <li><a href="@Url.Action("Post", "View", new { @ID = @item.ID })">@item.Title</a></li>
+    }
+</ul>

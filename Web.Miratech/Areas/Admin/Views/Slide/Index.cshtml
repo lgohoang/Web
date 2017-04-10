@@ -1,0 +1,54 @@
+﻿@model System.Collections.Generic.List<Web.Miratech.Models.SlideModels>
+@{
+    ViewBag.Title = "Slide List";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="panel panel-dark margin-bottom-40">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Bài viết
+                <a class="pull-right" href="@Url.Action("Create","Slide")">
+                    <i class="fa fa-plus"></i>
+                </a>
+            </h3>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên slide</th>
+                    <th>Thời gian tạo</th>
+                    <th>Người tạo</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model[i].ID)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Post","View", new { @ID = Model[i].ID})">
+                                @Html.DisplayFor(modelItem => Model[i].Title)
+                            </a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model[i].CreateTime)
+                        </td>
+                        <td>
+                            @Html.Action("GetFullName", "Account", new { @id = Model[i].UserID })
+                        </td>
+                        <td>
+                            <a class="btn btn-xs" href="@Url.Action("Edit", "Slide", new { id = Model[i].ID })"><i class="fa fa-edit"></i> Sửa</a>
+                            <a class="btn btn-danger btn-xs" href="@Url.Action("Delete", "Slide", new { id = Model[i].ID })"><i class="fa fa-trash-o"></i> Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

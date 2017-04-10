@@ -1,0 +1,62 @@
+﻿@model Web.Miratech.Models.CategoryModels
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Plugins/icon-picker/css/fontawesome-iconpicker.min.css" rel="stylesheet" />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="row">
+        <div class="col-md-3">
+            <h1 class="">Danh mục</h1>
+        </div>
+        <div class="col-md-3 pull-right">
+            <h3>
+                <button type="submit" class="pull-right btn-default btn-primary">Tạo</button>
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+            @Html.LabelFor(m => m.Icon)
+            @Html.TextBoxFor(m => m.Icon, new { @class = "form-control icp icp-auto", @placeholder = "Chọn Icon" })
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Tên danh mục" })
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control", @placeholder = "Tiêu đề danh mục" })
+        </div>
+        <div class="col-md-1">
+            @Html.LabelFor(m => m.Order)
+            @Html.TextBoxFor(m => m.Order, new { @class = "selectpicker form-control", @placeholder = "Thứ tự" })
+        </div>
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.Visible)
+            @Html.DropDownListFor(m => m.Visible, new SelectList(ViewBag.TrueFalse, "Value", "Text"), new { @class = "selectpicker form-control" })
+        </div>
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.Enable)
+            @Html.DropDownListFor(m => m.Enable, new SelectList(ViewBag.TrueFalse, "Value", "Text"), new { @class = "selectpicker form-control" })
+        </div>
+    </div>
+    <div class="row">
+        
+    </div>
+    <div class="row margin-top-20">
+        <div class="col-md-12">
+            @Html.ActionLink("Quay lại danh sách", "Index")
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/jquery-2.2.0.min.js"></script>
+<script src="~/Plugins/icon-picker/js/fontawesome-iconpicker.min.js"></script>
+<script>
+    $('.icp').iconpicker();
+</script>

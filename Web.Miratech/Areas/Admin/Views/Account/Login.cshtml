@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Web.Miratech.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/pages/page_log_reg_v1.css">
+</head>
+@*<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Login</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li class="active">Login</li>
+        </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->*@
+<!--=== Content Part ===-->
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+            <div class="reg-page">
+                <div class="reg-header">
+                    <h2>Login to your account</h2>
+                </div>
+                @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <div class="input-group margin-bottom-20">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.UserName)
+                    <div class="input-group margin-bottom-20">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Password)
+                    <div class="row">
+                        <div class="col-md-6 checkbox">
+                            <label>
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn-u pull-right" type="submit">Đăng Nhập</button>
+                        </div>
+                    </div>
+                }
+                <hr>
+                <h4>Quên mật khẩu ?</h4>
+                <p>no worries, <a class="color-green" href="#">bấm vào đây</a> để đặt lại mật khẩu</p>
+                <p>hoặc đăng ký, <a class="color-green" href="@Url.Action("Register","Account")">bấm vào đây</a> để đăng ký tài khoản mới</p>
+            </div>
+        </div>
+    </div><!--/row-->

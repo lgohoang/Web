@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Web.Miratech.Models.ClientModels>
+@{
+    ViewBag.Title = "Client";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!--Striped Rows-->
+<div class="col-md-12">
+    <div class="panel panel-dark margin-bottom-40">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Our Clients
+                <a class="pull-right" href="@Url.Action("Create","Client")">
+                    <i class="fa fa-plus"></i>
+                </a>
+            </h3>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tên</th>
+                    <th>Logo</th>
+                    <th>Thông tin</th>
+                    <th>Thứ tự</th>
+                    <th>Cho phép nhìn thấy</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => m.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => m.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => m.Image)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => m.Infomation)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => m.Order)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => m.Visible)
+                        </td>
+                        <td>
+                            <a class="btn btn-xs" href="@Url.Action("Edit", "Client", new { ID = m.ID })"><i class="fa fa-edit"></i> Edit</a>
+                            <a class="btn btn-danger btn-xs" href="@Url.Action("Delete", "Client", new { ID = m.ID })"><i class="fa fa-trash-o"></i> Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--End Striped Rows-->
